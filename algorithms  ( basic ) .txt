@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string min(string s, long long k){
+    long long max = 0;
+    for (long long i=0; i<=s.length()-k; i++){
+        string s1 = s.substr(i,k);
+        long long count = 0;
+        for (long long j=0; j<s1.length(); j++){
+            if (s1.at(j)=='a'||s1.at(j)=='i'||s1.at(j)=='o'||s1.at(j)=='e'||s1.at(j)=='u'){
+                count++;
+            }
+        }
+        if (count>max)
+        max=count;
+    }
+    vector <string> v;
+    for (long long i=0; i<=s.length(); i++){
+        string s1 = s.substr(i,k);
+        long long count = 0;
+        for (long long j=0; j<s1.length(); j++){
+            if (s1.at(j)=='a'||s1.at(j)=='i'||s1.at(j)=='o'||s1.at(j)=='e'||s1.at(j)=='u'){
+                count++;
+            }
+        }
+        if (count==max)
+        v.push_back(s1);
+    }
+    if (v.empty())
+    return "Not found";
+    
+    return v[0];
+}
+int main(){
+    string s;
+    cin>>s;
+    long long k;
+    cin>>k;
+    cout<<min(s,k);
+}

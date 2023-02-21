@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int lead[n];
+    for (int i=0; i<n; i++){
+        cin>>lead[i];
+    }
+    int m;
+    cin>>m;
+    int score[m];
+    for (int i=0; i<m; i++){
+        cin>>score[i];
+    }
+    int result[m];
+    int flag=0;
+    int count=0;
+ 
+   for (int i=0; i<n; i++){
+        if(lead[i]==lead[i+1])
+        count++;
+    }
+    int arr[n];
+    int num=0;
+    for (int i=0; i<n; i++){
+       if (lead[i]==lead[i+1]){
+           continue;
+       }
+       else{
+           arr[num]=lead[i];
+//           cout<<arr[num]<<endl;
+           num++;
+       }
+       
+    }
+//    for (int i=0; i<num; i++){
+//        cout<<arr[i]<<" ";
+//    }
+//    cout<<endl<<count<<endl;
+    for (int i=0; i<m; i++){
+        for (int k=0; k<num; k++){
+            if (score[i]>=arr[k]){
+               flag=0;
+               cout<<k+1<<endl;
+               break;  
+            }
+            else
+            flag=1;
+        }
+        
+        if (flag==1)
+        cout<<n-count+1<<endl;
+    }
+
+}

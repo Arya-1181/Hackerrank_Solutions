@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long min (long long n, long long k, vector<long long> v){
+    long long range = 2*k + 1;
+    long long max = v[0];
+    for (long long i=1; i<n; i++){
+        if (v[i]>max){
+            max = v[i];
+        }
+    }
+    long long count;
+    if (max%range!=0){
+        count = (max/range) + 1;
+    }
+    else{
+        count = max/range;
+    }
+    return count;
+} 
+int main(){
+    long long n,k;
+    cin>>n>>k;
+    vector <long long> v;
+    for (long long i=0; i<n; i++){
+        long long a;
+        cin>>a;
+        v.push_back(a);
+    }
+    cout<<min(n,k,v)<<endl;
+    return 0;
+}

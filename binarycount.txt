@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int binary(long long n){
+    long long s=n;
+    long long q; long long r;
+    int k=0;
+    long long arr[n];
+    for (long long i=0; i<n; i++){
+        q=s/2;
+        r=s%2;
+        s=q;
+        cout<<q<<" "<<r<<" ";
+        if (s==0)
+        break;
+        else
+        {
+            cout<<k<<" ";
+            arr[k]=r;
+            k++;
+            cout<<k<<endl;
+        }
+    }
+    cout<<endl<<k<<endl<<arr[1]<<endl;
+    long long arr1[10];
+    int samp=0;
+    arr[k]=1;
+    
+    for(int i=0; i<k+1; i++){
+        cout<<arr[k]<<" ";
+    }
+    
+    int count=0;
+    for (long long j=0; j<k; j++){
+        if ((arr[j]==1)&&(arr[j+1]==1))
+        {
+            samp=samp+1;
+        }
+        else
+        {
+            samp=0;
+            continue;
+        }
+        count++;
+        arr1[count]=samp;
+    }
+    long long side=sizeof(arr1)/sizeof(arr1[0]);
+    sort(arr1 , arr1 + side);   
+
+    return arr1[count-1]+1;
+}
+
+int main(){
+    long long int n;
+    cin>>n;
+    cout<<binary(n);
+    
+    return 0;
+}

@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+/*
+void new_year_chaos(long long n, vector<long long> v){
+    long long sum = 0;
+    for (long long i=0; i<n-1; i++){
+        if (v[i]>v[i+1]||(v[i]!=(i+1)&&v[i]>v[i+1])||v[i]>i+1){
+            if (abs(v[i]-(i+1))>2)
+            {
+                cout<<"Too chaotic"<<endl;
+                return;
+            }
+            else {
+                sum += abs(v[i]-(i+1));
+            }
+        }
+    }
+    cout<<sum<<endl;
+}
+*/
+void new_year_chaos(long long n, vector<long long> q) {
+    unsigned int min_bribes = 0;
+    vector<int> tmp(q.size()+1);
+    tmp[0] = -1;
+    for (int i=1; i<tmp.size(); ++i)
+        tmp[i] = i;
+
+    for (int i=0; i<q.size(); ++i) {
+        const int bribe = tmp[q[i]]-i-1;
+        if (bribe > 2) {
+            cout << "Too chaotic" << endl;
+            return;
+        }
+        if (bribe > 0) {
+            min_bribes += bribe;
+            int iPrev = q[i]-1;
+            while (iPrev > 0 && tmp[iPrev] == -1) --iPrev;
+            if (iPrev > 0) tmp[iPrev] += 1;
+            if (2 == bribe) {
+                iPrev -= 1;
+                while (iPrev > 0 && tmp[iPrev] == -1) --iPrev;
+                if (iPrev > 0) tmp[iPrev] += 1;
+            }
+        }
+        tmp[q[i]] = -1; // mark handled
+    }
+    cout << min_bribes << endl;
+}
+int main(){
+    int t;
+    cin>>t;
+    for (int i=0; i<t; i++){
+        long long n;
+        cin>>n;
+        vector<long long> v;
+        for (long long j=0; j<n; j++){
+            long long a;
+            cin>>a;
+            v.push_back(a);
+        }
+        new_year_chaos(n,v);
+    }
+    return 0;
+}

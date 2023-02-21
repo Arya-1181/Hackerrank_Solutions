@@ -1,0 +1,139 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for (int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+//    int store;
+    for (int i=0; i<n-1; i++){
+        if (arr[i]>arr[i+1])
+        {
+ //           cout<<"yes"<<" "<<i<<endl;
+            for (int j=i+1; j>1; j--){
+                if (arr[j]<arr[j-1])
+                {
+                    int store=arr[j];
+                    arr[j]=arr[j-1];
+                    arr[j-1]=store;
+                }
+                else
+                break; 
+                
+            }
+        }
+    }
+    for (int i=0; i<n; i++){
+        cout<<arr[i]<<" ";
+    }
+}
+/********************Sorting type 2 **********************************/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for (int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    int flag=0;
+    for (int i=0; i<n-1; i++){
+        if (arr[i]>arr[i+1])
+        {
+            int store=arr[i+1];
+            for (int j=i; j>=0; j--){
+                if (arr[j]>store)
+                {
+                    
+                    arr[j+1]=arr[j];
+                    for (int i=0; i<n; i++){
+                        cout<<arr[i]<<" ";
+                    }
+                    cout<<endl;//<<j<<endl;
+                }
+                else{
+                    arr[j+1]=store;
+                    flag=1;
+                    break;
+                }
+                
+            }
+            if (flag==0)
+            arr[0]=store;
+            break;  
+        }
+    }
+    
+    
+    for (int i=0; i<n; i++){
+        cout<<arr[i]<<" ";
+    }
+    
+}
+/****************************Sorting type 3 ***************************************/
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for (int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+
+    int flag=0;int stat=0;
+    for (int i=0; i<n-1; i++){
+        
+        if (arr[i]>arr[i+1])
+        {
+            flag=1; int stat=1;
+            int store=arr[i];
+            arr[i]=arr[i+1];
+            arr[i+1]=store;
+/*            if (stat==1)
+            {
+                for (int i=0; i<n; i++){
+                cout<<arr[i]<<" ";
+                }
+                cout<<endl;
+            }
+*/            for (int j=i+1; j>0; j--){
+                if (arr[j]<arr[j-1])
+                {
+                    int stock=arr[j];
+                    arr[j]=arr[j-1];
+                    arr[j-1]=stock;
+                }
+                else{
+                    continue;
+                }
+                
+            }
+//            stat=0;
+            for (int i=0; i<n; i++){
+            cout<<arr[i]<<" ";
+            }
+            cout<<endl;
+            
+ 
+        }
+        if (flag==0)
+        {
+            for (int i=0; i<n; i++){
+              cout<<arr[i]<<" ";
+            }
+            cout<<endl;
+        }
+    }
+    
+}

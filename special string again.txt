@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the substrCount function below.
+long substrCount(int n, string s) {
+    long count=0;
+    int i=n-1;
+    while (i>1){
+        for (long long j=0; j<n; j++){
+            string s1=s.substr(j,i);
+            if (s1.length()%2==0){
+                int flag=0;
+                for (long long k=0; k<s1.length(); k++){
+                    if (s1.at(k)!=s1.at(0))
+                    flag=1;
+                }
+                if (flag==0)
+                count++;
+            }
+            else if (s1.length()%2!=0){
+                int flag=0;
+                for (long long k=0; k<s1.length()/2; k++){
+                    if (s1.at(k)!=s1.at(s1.length()-1-k))
+                    flag = 1;
+                }
+                if (flag==0)
+                count++;
+            }
+        }
+    }
+    return n+count;
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    substrCount(n,s);
+    return 0;
+}

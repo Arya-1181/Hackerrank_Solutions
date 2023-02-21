@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    vector <string> goodgenes;
+    for (int i=0; i<n; i++){
+        string s;
+        cin>>s;
+        goodgenes.push_back(s);
+    }
+    vector <int> health;
+    for (int i=0; i<n; i++){
+        int a;
+        cin>>a;
+        health.push_back(a);
+    }
+    int t;
+    cin>>t;
+    vector <int> start;
+    vector <int> end;
+    vector <string> sample;
+    for (int i=0; i<t; i++){
+        int a,b;
+        string s;
+        cin>>a>>b>>s;
+        start.push_back(a);
+        end.push_back(b);
+        sample.push_back(s);
+    }
+    //Cin ends here
+    vector <int> result;
+    for (int i=0; i<t; i++){
+        vector <string> trim;//::iterator it;
+        vector <string> check;
+        vector <int> value;
+        int sum=0;
+        
+        for (int j=start[i]; j<=end[i]; j++){
+            trim.push_back(goodgenes[j]);
+            value.push_back(health[j]);
+            check.push_back(goodgenes[j]);
+        }
+//        copy(trim.begin(),trim.end(),ostream_iterator<string>(cout," "));
+//        cout<<endl<<endl;
+//        copy(value.begin(),value.end(),ostream_iterator<int>(cout," "));
+//        cout<<endl<<endl;
+        for (int j=0; j<trim.size(); j++){
+            int l=trim[j].length();
+//            cout<<trim[j]<<"  "<<l<<endl;
+            
+            for (int k=0; k<=sample[i].size()-l; k++){
+                string match=sample[i].substr(k,l);
+//                cout<<sample[i]<<"  "<<match<<endl;
+                if (trim[j]==match)
+                sum=sum+value[j];
+                
+            }
+            
+        }
+        result.push_back(sum);
+    }
+    sort(result.begin(),result.end());
+    cout<<result[0]<<" "<<result[result.size()-1];
+    return 0;
+}

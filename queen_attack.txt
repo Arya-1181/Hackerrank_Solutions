@@ -1,0 +1,148 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class chess{
+    public :
+    int n,k,q1,q2;
+    int rk,ck;
+    int ceast=0;
+    void east(int q2,int n){
+        for (int i=q2+1; i<=n; i++){
+            if (i==ck)
+            break;
+            else
+            ceast++;
+        }
+        cout<<"east "<<ceast<<endl;
+    }
+    int cwest=0;
+    void west(int q2,int n){
+        for (int i=q2-1; i>=1; i--){
+            if (i==ck)
+            break;
+            else
+            cwest++;
+        }
+        cout<<"west "<<cwest<<endl;
+    }
+    int cnorth=0;
+    void north(int q1, int n){
+        for (int i=q1+1; i<=n; i++){
+            if (i==rk)
+            break;
+            else;
+            cnorth++;
+        }
+        cout<<"north "<<cnorth<<endl;
+    }
+    int csouth=0;
+    void south(int q1, int n){
+        for (int i=q1-1; i>=1; i--){
+            if (i==rk)
+            break;
+            else 
+            csouth++;
+        }
+        cout<<"south "<<csouth<<endl;
+    }
+    
+    int sum1(){
+        int tot=cnorth+csouth+ceast+cwest;
+        return tot;
+    }
+    
+    
+    int cnortheast=0;
+    void northeast(int q1,int q2,int n){
+        for (int i=q1+1; i<=n; i++){
+            if (i==rk)
+            break;
+            else
+            cnortheast++;
+        }
+        for (int i=q2+1; i<=n; i++){
+            if (i==ck)
+            break;
+            else
+            cnortheast++;
+        }
+        cnortheast=cnortheast/2;
+        cout<<"northeast "<<cnortheast<<endl;
+    }
+    int cnorthwest=0;
+    void northwest(int q1, int q2, int n){
+        for (int i=q1+1; i<=n; i++){
+            if (i==rk)
+            break;
+            else
+            cnorthwest++;
+        }
+        for (int i=q2-1; i>=1; i--){
+            if (i==ck)
+            break;
+            else
+            cnorthwest++;
+        }
+        
+        cnorthwest=cnorthwest/2;
+        cout<<"northwest "<<cnorthwest<<endl;
+    }
+    int csouthwest=0;
+    void southwest(int q1, int q2, int n){
+        for (int i=q1-1; i>=1; i--){
+            if (i==rk)
+            break;
+            else
+            csouthwest++;
+        }
+        for (int i=q2-1; i>=1; i--){
+            if (i==ck)
+            break;
+            else
+            csouthwest++;
+        }
+        csouthwest=csouthwest/2;
+        cout<<"southwest "<<csouthwest<<endl;
+    }
+    int csoutheast;
+    void southeast(int q1,int q2,int n){
+        for (int i=q2+1; i<=n; i++){
+            if (i==ck)
+            break;
+            else
+            csoutheast++;
+        }
+        for (int i=q1-1; i>=1; i--){
+            if (i==rk)
+            break;
+            else
+            csoutheast++;
+        }
+        csoutheast=csoutheast/2;
+        cout<<"southeast "<<csoutheast<<endl;
+    }
+    int sum(){
+        int total=cnorth+csouth+ceast+cwest+cnortheast+cnorthwest+csoutheast+csouthwest;
+        return total;
+    }
+};    
+    int main(){
+        
+        int n,k,q1,q2;
+        int rk,ck;
+        cin>>n>>k>>q1>>q2>>rk>>ck;
+        chess o;
+        o.east(q2,n);
+        o.west(q2,n);
+        o.north(q1,n);
+        o.south(q1,n);
+        o.northeast(q1,q2,n);
+        o.northwest(q1,q2,n);
+        o.southeast(q1,q2,n);
+        o.southwest(q1,q2,n);        
+        cout<<o.sum()<<endl;
+        cout<<o.sum1();
+        
+        return 0;
+    }

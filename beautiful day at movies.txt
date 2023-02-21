@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long beautiful_day(string a, string b, int k){
+    long long count=0;
+    int x=stoi(a);
+    int y=stoi(b);
+    for (long long i=x; i<=y; i++){
+        string s=to_string(i);
+        reverse(s.begin(),s.end());
+        int z=stoi(s);
+        int diff = abs(i-z);
+        if (diff%k==0)
+        count++;
+    }
+    return count;
+}
+int main(){
+    string a,b;
+    int k;
+    cin>>a>>b>>k;
+    cout<<beautiful_day(a,b,k);
+    return 0;
+}

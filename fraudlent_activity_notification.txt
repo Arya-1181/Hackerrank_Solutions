@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    long long n;int d;
+    cin>>n>>d;
+    vector <int> v;
+    for (long long i=0; i<n; i++){
+        long a;
+        cin>>a;
+        v.push_back(a);
+    }
+    // cin completd
+    
+    
+    long long count=0;
+    
+    for (long long i=0; i<n-d; i++){
+        long long sum=0;
+        for (long long j=i; j<i+d; j++){
+            sum=sum+v[j];
+        }
+//        cout<<sum<<"  "<<d<<endl;
+        float limit=(float)sum/d;
+//        cout<<sum<<"  "<<limit<<endl;
+        for (long long k=i+d; k<n; k++){
+//            cout<<v[k]<<endl;
+            if (v[k]>=2*limit){
+                count++;
+                break;
+            }
+            
+        }
+    }
+    
+    cout<<count;
+    return 0;
+}

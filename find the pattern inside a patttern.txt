@@ -1,0 +1,104 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+
+/*
+    int R=4,C=5;
+    int r=2,c=2;
+    int a=C-c;
+    string S[R]={"12499","99239","78955","19298"};
+    string s[r]={"99","99"};
+*/
+    int R,C;
+    cin>>R>>C;
+    string S[R];
+    for (int i=0; i<R; i++){
+        cin>>S[i];
+    }
+    int r,c;
+    cin>>r>>c;
+    string s[r];
+    for (int i=0; i<r; i++){
+        cin>>s[i];
+    }
+    
+    int count=0;
+    int a=C-c;
+    int flag=0;
+    vector <int> result;
+    for (int i=0; i<r; i++){
+        for (int j=0; j<R; j++){
+            for (int k=0; k<=a; k++){
+                string str=S[j].substr(k,c);
+                flag++;
+//                cout<<str<<" ";
+                if (str==s[i])
+                {
+                    int res=flag;
+                    result.push_back(res);
+//                    cout<<"yes"<<" "<<result[count]<<endl;
+                    count++;
+                }
+//                else
+//                cout<<"no"<<endl;
+            }
+        }
+    }
+    int caught=0;
+    for (int i=0; i<count-1; i++){
+//        cout<<result[i]<<"  ";
+        if (result[i+1]-result[i]==R-1)
+        caught=1;
+    }
+    if (caught==1){
+      cout<<"YES"<<endl;
+    }
+    else
+    cout<<"NO"<<endl;
+}
+
+/*****official code****/
+#include <set>
+#include <map>
+#include <stack>
+#include <queue>
+#include <string>
+#include <vector>
+#include <cstdio>
+#include <numeric>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int T, R, C, r, c;
+char G[1005][1005], P[1005][1005];
+void solve() {
+    scanf("%d%d", &R, &C);
+    for (int i = 0; i < R; ++i) scanf("%s", G[i]);
+    scanf("%d%d", &r, &c);
+    for (int i = 0; i < r; ++i) scanf("%s", P[i]);
+    for (int i = 0; i <= R - r; ++i) {
+        for (int j = 0; j <= C - c; ++j) {
+            for (int a = 0; a < r; ++a) {
+                for (int b = 0; b < c; ++b) {
+                    if (G[i+a][j+b] != P[a][b]) 
+                        goto label1;
+                }
+            }
+            printf("YES\n");
+            return;
+            label1:;
+        }
+    }
+    printf("NO\n");
+}
+int main() {
+    scanf("%d", &T);
+    while (T--) solve();
+    return 0;
+}

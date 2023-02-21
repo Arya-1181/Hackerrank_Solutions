@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int a;
+      cin>>a;
+  
+      string input[a][a];
+      for (int i=0; i<a; i++){
+          for (int j=0; j<a-1; j++){
+              cin>>input[i][j];
+          }
+      }
+      
+      string search[a];
+      for (int k=0; k<a; k++){
+          cin>>search[k];
+      }
+   
+
+      for (int i=0; i<a; i++){
+          for (int j=0; j<a-1; j++){
+              cout<<input[i][j]<<" ";
+          }
+          
+          cout<<endl;
+      }
+      cout<<endl;
+      cout<<input[2][0];
+      cout<<endl<<endl;
+
+      for (int k=0; k<a; k++){
+          cout<<search[k]<<endl;
+      }
+      
+      cout<<endl;
+      
+      string s=input[0][1];
+      cout<<s<<endl<<endl;
+      
+     int found;
+      for (int i=0; i<a; i++){
+          for (int j=0; j<a; j++){
+              if(search[i]==input[j][0])
+              {
+              cout<<search[i]<<"="<<input[j][1]<<endl;
+              found=0;
+              break;
+              }
+              else
+              found=1;
+          
+            }
+            
+            if (found==1)
+            cout<<"no"<<endl;
+            else
+            continue;
+            
+        }
+   return 0;
+}

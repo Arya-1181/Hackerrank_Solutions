@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int t,i,count;
+    cin>>t;
+    vector <int> n;
+    vector <vector <int>> v;
+    for (i=0; i<t; i++){
+        int a;
+        cin>>a;
+        n.push_back(a);
+        vector <int> temp;
+        for (int k=0; k<n[t]; k++){
+            int b;
+            cin>>b;
+            temp.push_back(b);
+        }
+        v.push_back(temp);
+    } 
+    vector <int> result;
+    i=0;
+    while (i<t){
+        for (int j=0; j<n[t]; j++){
+            if (i<v[t][j]-1){
+                count=count+v[t][j]-1-i;
+                if (count>=2){
+                    cout<<"Too chaotic"<<endl;
+                    break;
+                }
+                else {
+                result.push_back(count);
+                }
+            }
+        }
+        if (result.empty())
+        continue;
+        else{
+            int sum=0;
+            for (int j=0; j<result.size(); j++)
+            sum=sum+result[j];
+            
+            cout<<sum<<endl;
+        }
+        i++;
+    }
+}

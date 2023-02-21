@@ -1,0 +1,98 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void timeconversion(string input){
+    
+    if ((input.at(8)=='A')&&(input.at(9)=='M'))
+    {
+        if ((input.at(0)=='1')&&(input.at(1)=='2'))
+        {
+            input.replace(0,1,"0");
+            input.replace(1,1,"0");
+            for(int i=0; i<=7; i++){
+                cout<<input.at(i);
+            }
+        }
+        else
+        {
+            for(int i=0; i<=7; i++){
+                cout<<input.at(i);
+            }
+        }
+    }
+    else if ((input.at(8)=='P')&&(input.at(9)=='M'))
+    {
+        if ((input.at(0)=='-')&&(input.at(1)=='1')&&(input.at(2)=='2'))
+        {
+            for (int i=0; i<=9; i++){
+                input.replace(i,1,input.substr(i+1,1));            
+            }
+            
+            string s1=input.substr(0,2);
+            string s2=input.substr(2,6);
+            
+            stringstream v(s1);
+            int x;
+            v >> x;
+            x=x+12;
+            
+            ostringstream s;
+            
+            s << x;
+            
+            string s3=s.str();
+            
+            cout<<s3+s2;
+             
+        }
+        
+        else if ((input.at(0)=='1')&&(input.at(1)=='2'))
+        {
+            string s1=input.substr(0,2);
+            string s2=input.substr(2,6);
+            
+            stringstream v(s1);
+            int x;
+            v >> x;
+//            x=x+12;
+            
+            ostringstream s;
+            
+            s << x;
+            
+            string s3=s.str();
+            
+            cout<<s3+s2;
+        }
+        
+        else 
+        {
+            string s1=input.substr(0,2);
+            string s2=input.substr(2,6);
+            
+            stringstream v(s1);
+            int x;
+            v >> x;
+            x=x+12;
+            
+            ostringstream s;
+            
+            s << x;
+            
+            string s3=s.str();
+            
+            cout<<s3+s2;
+        }
+        
+ //       return 0;
+    }
+}   
+    int main()
+    {
+        string input;
+        cin>>input;
+        timeconversion(input);
+    
+    return 0;
+}

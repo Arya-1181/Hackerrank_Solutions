@@ -1,0 +1,58 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+class text_editor {
+public :
+vector<string> store;
+string base = "";
+
+void append(string s){
+    base += s;
+    store.push_back(base);
+}
+void del (long long k){
+    base.erase(base.length()-k,k);
+    store.push_back(base);
+}
+void print(long long k){
+    cout<<base.at(k)<<endl;
+}
+};
+
+int main() {
+     long long q;
+     cin>>q;
+     long long count = 0;
+     vector <int> store;
+     for (long long i=0; i<q; i++){
+         int n;
+         cin>>n;
+         if (n!=4){
+             if (n==1){
+                 string s;
+                 cin>>s;
+                 append(s);
+                 count++;
+             }
+             else if (n==2){
+                 long long k;
+                 cin>>k;
+                 del(k);
+                 count++;
+             }
+             else {
+                 long long k;
+                 cin>>k;
+                 print(k);
+             }
+         }
+         else {
+             base = store[count-1];
+         }
+     }
+    return 0;
+}

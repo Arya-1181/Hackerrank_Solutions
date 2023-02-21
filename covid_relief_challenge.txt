@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    long long n,m;
+    cin>>n;
+    vector <int> list1;
+    for (long long i=0; i<n; i++){
+        int a;
+        cin>>a;
+        list1.push_back(a);
+    }
+    cin>>m;
+    vector <long> list2;
+    for (long long i=0; i<m; i++){
+        int a;
+        cin>>a;
+        list2.push_back(a);
+    }
+    long long count1=0,count2=0;
+    long long sum1=0,sum2=0;
+    for (long long i=0; i<list1.size(); i++){
+        sum1=sum1+list1[i];
+        if (list1[i]==0)
+        count1++;
+    }
+    for (long long i=0; i<list2.size(); i++){
+        sum2=sum2+list2[i];
+        if (list2[i]==0)
+        count2++;
+    }
+    long long resultsum,sumnew=0,sumnewagain=0;
+    if (sum1>sum2){
+       for (long long i=0; i<list1.size(); i++){
+        if (list1[i]==0)
+        list1[i]=1;
+        sumnew=sumnew+list1[i];   
+        }
+        resultsum=sumnew-sum2;
+        long a=resultsum/count2;
+        long stop=count2/2;
+        long k=0;
+        for (long long i=0; i<list2.size(); i++){
+            if (list2[i]==0){
+                k++;
+                if (k>stop)
+                list2[i]=a+1;
+                else 
+                list2[i]=a;
+            }
+            sumnewagain=sumnewagain+list2[i];
+        }
+        if (sumnewagain==sumnew)
+        cout<<sumnew;
+        else
+        cout<<"-1";
+    }
+    else if (sum1<sum2){
+        for (long long i=0; i<list2.size(); i++){
+        if (list2[i]==0)
+        list2[i]=1;
+        sumnew=sumnew+list1[i];   
+        }
+        resultsum=sumnew-sum1;
+        long a=resultsum/count1;
+        long stop=count1/2;
+        long k=0;
+        for (long long i=0; i<list1.size(); i++){
+            if (list1[i]==0){
+                k++;
+                if (k>stop)
+                list1[i]=a+1;
+                else 
+                list1[i]=a;
+            }
+            sumnewagain=sumnewagain+list1[i];
+        }
+        if (sumnewagain==sumnew)
+        cout<<sumnew;
+        else
+        cout<<"-1";
+    }   
+    return 0;
+}

@@ -1,0 +1,26 @@
+#include <iostream>
+#include <iomanip>
+#include <limits>
+
+using namespace std;
+
+int main() {
+    int i = 4;
+    double d = 4.0;
+    string s = "HackerRank ";
+
+    int j; double b; string t;
+    cin>>j;
+    cin>>b;
+    string sum;
+    while(cin>>t)
+    {
+        sum=sum+t+" ";
+    }
+    
+    cout<<i+j<<endl;
+    cout<<fixed<<setprecision(1)<<d+b<<endl;
+    cout<<s<<sum;
+    
+    return 0;
+}

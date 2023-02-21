@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+/* MY CODE
+long long arrayManipulation(long long n, long long k, vector <long long> start, vector <long long> end, vector <long long> add, vector <long long> v) {
+    for (long long i=0; i<k; i++){
+        for (long long j=start[i]-1; j<end[i]; j++){
+            v[j]+=add[i];
+        }
+    }
+    sort(v.begin(),v.end(),greater <int> ());
+    return v[0];
+}
+
+int main(){
+    long long n,k;
+    cin>>n>>k;
+    vector<long long> start;
+    vector<long long> end;
+    vector<long long> add;
+    vector<long long> v;
+    for (long long i=0; i<k; i++){
+        long long a,b,c;
+        cin>>a>>b>>c;
+        start.push_back(a);
+        end.push_back(b);
+        add.push_back(c);
+    }
+
+    for (long long i=0; i<n; i++)
+    v.push_back(0);
+    
+    cout<<arrayManipulation(n,k,start,end,add,v);
+}
+*/
+// DISCUSSION CODE
+int main() {
+    long int N,K,p,q,sum,i,j,max=0,x=0;
+
+    cin>>N>>K;
+    long int *a=new long int[N+1]();
+
+    for(i=0;i<K;i++)
+    {
+        cin>>p>>q>>sum;
+        a[p]+=sum;
+        if((q+1)<=N) a[q+1]-=sum;
+    }
+
+    for(i=1;i<=N;i++)
+    {
+       x=x+a[i];
+       if(max<x) max=x;
+
+    }
+
+    cout<<max;
+    return 0;
+}
